@@ -83,4 +83,3 @@ DermAI demonstrates the potential of deep learning in the healthcare domain, par
 By using CNNs and transfer learning, it offers a reliable and scalable approach for automatic skin disease recognition.  
 This project represents a significant step toward AI-assisted medical diagnosis systems, reducing manual workload and improving diagnostic accuracy.
 
---
