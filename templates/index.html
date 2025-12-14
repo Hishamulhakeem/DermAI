@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DermAI – Skin Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">🧬 DermAI</div>
+        <nav class="theme-toggle" aria-label="Theme Switch">
+            <button id="dark-mode-toggle" class="toggle-button" aria-label="Toggle Dark Mode">
+                <span class="icon">🌙</span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="card upload-card">
+            <h2>Upload Skin Image</h2>
+            <form id="upload-form" enctype="multipart/form-data">
+                <input type="file" id="image-upload" name="file" accept="image/png, image/jpeg, image/jpg" hidden required>
+                <div class="file-drop-area" id="file-drop-area">
+                    <p>Drag & drop image here, or <span class="browse-link">click to browse</span></p>
+                    <p class="file-name" id="selected-file-name"></p>
+                </div>
+                <div class="image-preview-container">
+                    <img id="image-preview" src="" alt="Image Preview" style="display: none;">
+                </div>
+                <button type="submit" id="predict-button" class="btn primary-btn" disabled>
+                    <span id="button-text">Analyze Skin</span>
+                    <div id="loading-spinner" class="spinner" style="display: none;"></div>
+                </button>
+            </form>
+            <p class="disclaimer-text">
+                🚨 This is an **AI-assisted prediction** and not a **medical diagnosis**. Consult a qualified dermatologist.
+            </p>
+        </section>
+
+        <section class="card result-card hidden" id="result-card">
+            <h2>🔬 Analysis Result</h2>
+            <div id="result-content">
+                <div class="result-item best-result">
+                    <p class="label">Primary AI Prediction:</p>
+                    <h3 id="best-disease-name"></h3>
+                    </div>
+                
+                <div class="top3-results">
+                    <h4>Top 3 Potential Diseases:</h4>
+                    <ul id="top3-list" class="top3-list">
+                        </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="card hospital-card hidden" id="hospital-card">
+            <h2>📍 Nearby Medical Help</h2>
+            <div id="location-status">
+                <p>Getting your location...</p>
+            </div>
+            <div id="map-container" class="map-container">
+                </div>
+            <p class="note">Map shows nearby Hospitals, Clinics, and Dermatologists. (Requires location permission)</p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
